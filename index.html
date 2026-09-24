@@ -3,402 +3,548 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escola Virtual - Cursos de Programação</title>
+    <title>CodeCamp - Aprenda a Programar</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
         }
 
         body {
-            background: #faf7ff;
-            color: #2a1b3d;
+            background: #fffbf5;
+            color: #2d2a26;
             line-height: 1.6;
         }
 
-        /* Cabeçalho */
+        /* Header */
         header {
-            background: linear-gradient(135deg, #4a148c, #9c27b0, #e91e63);
+            background: #fff;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff6b35;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: #2d2a26;
+        }
+
+        header nav {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        header nav a {
+            color: #55504a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        header nav a:hover {
+            color: #ff6b35;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b35;
+            transition: width 0.3s;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
-            padding: 2rem 1rem;
+            padding: 5rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(156, 39, 176, 0.35);
             position: relative;
             overflow: hidden;
         }
 
-        header::before {
+        .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            animation: brilho 6s infinite linear;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
         }
 
-        @keyframes brilho {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
             position: relative;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            line-height: 1.2;
         }
 
-        header p {
+        .hero p {
             font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto 2rem;
             opacity: 0.95;
             position: relative;
+            z-index: 1;
         }
 
-        /* Navegação */
-        nav {
-            background: #311b4a;
+        .hero-btns {
             display: flex;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            padding: 0.8rem;
-            gap: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        nav a {
-            color: #e1bee7;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        nav a:hover {
-            background: #9c27b0;
-            color: white;
-        }
-
-        /* Container principal */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Seções */
-        section {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 6px 25px rgba(156, 39, 176, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid #9c27b0;
-        }
-
-        section:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(156, 39, 176, 0.18);
-        }
-
-        h2 {
-            color: #4a148c;
-            font-size: 1.8rem;
-            margin-bottom: 1.2rem;
-            border-left: 6px solid #9c27b0;
-            padding-left: 1rem;
-        }
-
-        h3 {
-            color: #6a1b9a;
-            margin: 1rem 0 0.5rem;
-        }
-
-        /* Grid de cursos */
-        .cursos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .curso-card {
-            background: #faf5ff;
-            border: 1px solid #e1bee7;
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .curso-card:hover {
-            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.25);
-            border-color: #9c27b0;
-            transform: translateY(-4px);
-        }
-
-        .curso-card h4 {
-            color: #4a148c;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .curso-card p {
-            font-size: 0.95rem;
-            color: #4a3a5a;
-            flex: 1;
-        }
-
-        .badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #e1bee7, #f8bbd0);
-            color: #4a148c;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            margin-top: 0.8rem;
-            align-self: flex-start;
-        }
-
-        /* Destaque Python */
-        .python-destaque {
-            background: linear-gradient(135deg, #fce4ec, #ede7f6);
-            border-left: 6px solid #e91e63;
-            border-top: 4px solid #e91e63;
-        }
-
-        .python-destaque h2 {
-            border-left-color: #e91e63;
-        }
-
-        .python-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .python-texto {
-            flex: 2;
-            min-width: 250px;
-        }
-
-        .python-icone {
-            flex: 1;
-            font-size: 5rem;
-            text-align: center;
-            filter: drop-shadow(0 0 15px rgba(233, 30, 99, 0.4));
-            animation: flutuar 3s ease-in-out infinite;
-        }
-
-        @keyframes flutuar {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            position: relative;
+            z-index: 1;
         }
 
         .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #9c27b0, #e91e63);
-            color: white;
-            text-decoration: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: transform 0.2s, box-shadow 0.3s;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
             border: none;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+            font-size: 1rem;
+            transition: all 0.25s;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(233, 30, 99, 0.5);
+        .btn-branco {
+            background: white;
+            color: #ff6b35;
+        }
+
+        .btn-branco:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-transparente {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-transparente:hover {
+            background: white;
+            color: #ff6b35;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Títulos de seção */
+        .titulo-secao {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .titulo-secao .badge {
+            display: inline-block;
+            background: #fff1e6;
+            color: #ff6b35;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .titulo-secao h2 {
+            font-size: 2.2rem;
+            color: #2d2a26;
+            margin-bottom: 0.8rem;
+        }
+
+        .titulo-secao p {
+            color: #6b6560;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grid de cursos estilo magazine */
+        .grid-magazine {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card-magazine {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            border-bottom: 4px solid transparent;
+            position: relative;
+        }
+
+        .card-magazine:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+            border-bottom-color: #ff6b35;
+        }
+
+        .card-magazine .icone-circulo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-magazine h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: #2d2a26;
+        }
+
+        .card-magazine p {
+            color: #6b6560;
+            font-size: 0.92rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-magazine .nivel {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nivel.iniciante {
+            background: #e3f5e1;
+            color: #3d8b37;
+        }
+
+        .nivel.intermediario {
+            background: #fff3cd;
+            color: #a67c00;
+        }
+
+        /* Cores diferentes para cada card */
+        .cor-1 { background: #fff1e6; color: #ff6b35; }
+        .cor-2 { background: #e6f4ff; color: #2f80ed; }
+        .cor-3 { background: #f0e6ff; color: #7c3aed; }
+        .cor-4 { background: #e6fffa; color: #14b8a6; }
+        .cor-5 { background: #fff0f3; color: #e63946; }
+        .cor-6 { background: #f5f5dc; color: #8b7355; }
+
+        /* Seção Python — layout split */
+        .python-section {
+            background: #2d2a26;
+            color: white;
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 2rem auto;
+            max-width: 1150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .python-section::before {
+            content: '🐍';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            top: -50px;
+            right: -30px;
+        }
+
+        .python-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .python-section h2 span {
+            color: #ffb347;
+        }
+
+        .python-section p {
+            color: #b8b3ad;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .lista-aprendizado {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            position: relative;
+        }
+
+        .lista-aprendizado li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #e8e4df;
+            font-size: 0.92rem;
+        }
+
+        .lista-aprendizado li::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: #ffb347;
+            color: #2d2a26;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .python-code-box {
+            background: #1e1c19;
+            border-radius: 16px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .python-code-box .dots {
+            display: flex;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .python-code-box .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-vermelho { background: #ff5f56; }
+        .dot-amarelo { background: #ffbd2e; }
+        .dot-verde { background: #27c93f; }
+
+        .code-linha { color: #d4d4d4; }
+        .code-chave { color: #ff6b9d; }
+        .code-funcao { color: #ffb347; }
+        .code-string { color: #a5e844; }
+        .code-comentario { color: #6b6b6b; font-style: italic; }
+
+        /* Depoimentos */
+        .depoimentos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .depoimento {
+            background: white;
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .depoimento::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 4rem;
+            color: #fff1e6;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .depoimento p {
+            color: #55504a;
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .depoimento .autor {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .autor-info strong {
+            display: block;
+            font-size: 0.9rem;
+            color: #2d2a26;
+        }
+
+        .autor-info span {
+            font-size: 0.8rem;
+            color: #8b857e;
         }
 
         /* Rodapé */
         footer {
-            background: #311b4a;
-            color: #e1bee7;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 2rem;
-            font-size: 0.9rem;
+            background: #2d2a26;
+            color: #b8b3ad;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 3rem;
         }
 
-        footer a {
-            color: #f8bbd0;
-            text-decoration: none;
+        .footer-conteudo {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
-        /* Interatividade JS */
-        .mensagem-js {
-            margin-top: 1rem;
-            padding: 0.8rem;
-            background: #f3e5f5;
-            border-radius: 8px;
-            color: #4a148c;
-            font-weight: 500;
-            display: none;
-            border-left: 4px solid #9c27b0;
-        }
-
-        .mensagem-js.visivel {
+        .footer-col a {
             display: block;
-            animation: fadeIn 0.4s ease;
+            color: #b8b3ad;
+            text-decoration: none;
+            font-size: 0.88rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
+        .footer-col a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-base {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #3d3a36;
+            font-size: 0.85rem;
+            color: #8b857e;
         }
 
         /* Responsivo */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .container { padding: 0 1rem; }
-            section { padding: 1.5rem; }
-            .python-icone { font-size: 3.5rem; }
+        @media (max-width: 800px) {
+            .hero h1 { font-size: 2rem; }
+            .python-section {
+                grid-template-columns: 1fr;
+                padding: 2.5rem 1.5rem;
+            }
+            .lista-aprendizado { grid-template-columns: 1fr; }
+            .titulo-secao h2 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <h1>✨ Escola Virtual</h1>
-        <p>Cursos gratuitos de Programação e Python Básico</p>
+        <div class="logo">💻 Code<span>Camp</span></div>
+        <nav>
+            <a href="#cursos">Cursos</a>
+            <a href="#python">Python</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#programacao">Programação</a>
-        <a href="#python">Python Básico</a>
-        <a href="#sobre">Sobre</a>
-    </nav>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Aprenda a Programar<br>do Zero ao Profissional</h1>
+        <p>Trilha completa de cursos gratuitos baseada na Escola Virtual da Fundação Bradesco, com certificado digital reconhecido.</p>
+        <div class="hero-btns">
+            <a href="#cursos" class="btn btn-branco">Ver Cursos →</a>
+            <a href="#python" class="btn btn-transparente">Python Básico</a>
+        </div>
+    </section>
 
-    <div class="container">
+    <!-- Cursos -->
+    <div class="container" id="cursos">
+        <div class="titulo-secao">
+            <span class="badge">Trilha Completa</span>
+            <h2>Nossos Cursos de Programação</h2>
+            <p>Do básico ao intermediário, escolha por onde começar sua jornada na programação.</p>
+        </div>
 
-        <section id="programacao">
-            <h2>💻 Cursos de Programação</h2>
-            <p>Baseado na área de interesse <strong>Programação</strong> da <a href="https://www.ev.org.br/areas-de-interesse/programacao" target="_blank" rel="noopener">Escola Virtual</a> da Fundação Bradesco. Todos os cursos são gratuitos e com certificado digital.</p>
-
-            <div class="cursos-grid">
-                <div class="curso-card">
-                    <h4>Lógica de Programação</h4>
-                    <p>Aprenda os fundamentos da lógica para desenvolver algoritmos e resolver problemas computacionais.</p>
-                    <span class="badge">Iniciante</span>
-                </div>
-                <div class="curso-card">
-                    <h4>Python Básico</h4>
-                    <p>Introdução à linguagem Python: variáveis, tipos de dados, estruturas de controle e funções.</p>
-                    <span class="badge">Iniciante</span>
-                </div>
-                <div class="curso-card">
-                    <h4>Java Básico</h4>
-                    <p>Primeiros passos com Java: sintaxe, orientação a objetos e criação de aplicações simples.</p>
-                    <span class="badge">Iniciante</span>
-                </div>
-                <div class="curso-card">
-                    <h4>HTML e CSS</h4>
-                    <p>Desenvolvimento web front-end: estrutura com HTML5 e estilização com CSS3.</p>
-                    <span class="badge">Iniciante</span>
-                </div>
-                <div class="curso-card">
-                    <h4>JavaScript</h4>
-                    <p>Programação client-side para tornar páginas web interativas e dinâmicas.</p>
-                    <span class="badge">Intermediário</span>
-                </div>
-                <div class="curso-card">
-                    <h4>Banco de Dados</h4>
-                    <p>Modelagem e consultas SQL para armazenamento e recuperação de informações.</p>
-                    <span class="badge">Intermediário</span>
-                </div>
-            </div>
-
-            <button class="btn" id="btnMostrarCursos">Mostrar todos os cursos</button>
-            <div class="mensagem-js" id="mensagemCursos">
-                ✅ A Escola Virtual oferece diversos outros cursos na área de Tecnologia. Acesse o site oficial para ver o catálogo completo!
-            </div>
-        </section>
-
-        <section id="python" class="python-destaque">
-            <h2>🐍 Python Básico</h2>
-            <div class="python-info">
-                <div class="python-texto">
-                    <p><strong>Python</strong> é uma linguagem de programação versátil, fácil de aprender e amplamente utilizada no mercado. Com ela você pode criar desde scripts simples até aplicações web, análise de dados e inteligência artificial.</p>
-                    <h3>O que você vai aprender:</h3>
-                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li>Variáveis e tipos de dados</li>
-                        <li>Operadores e expressões</li>
-                        <li>Estruturas condicionais (if/else)</li>
-                        <li>Laços de repetição (for/while)</li>
-                        <li>Funções e módulos</li>
-                        <li>Listas, tuplas e dicionários</li>
-                    </ul>
-                    <button class="btn" id="btnPython">Quero saber mais sobre Python</button>
-                    <div class="mensagem-js" id="mensagemPython">
-                        🐍 Python é uma excelente escolha para iniciantes! Na Escola Virtual você encontra o curso <strong>Python Básico</strong> com certificado gratuito.
-                    </div>
-                </div>
-                <div class="python-icone">🐍</div>
-            </div>
-        </section>
-
-        <section id="sobre">
-            <h2>ℹ️ Sobre a Escola Virtual</h2>
-            <p>A <strong>Escola Virtual</strong> é uma plataforma de educação online gratuita criada pela <strong>Fundação Bradesco</strong>. Oferece cursos livres de Formação Inicial e Continuada (FIC) nas áreas de Administração, Contabilidade, Desenvolvimento Pessoal, Educação e Tecnologia.</p>
-            <p style="margin-top: 1rem;">Os cursos são autoinstrucionais, com certificado digital válido por 2 anos. Para se inscrever, basta criar uma conta no site oficial: <a href="https://www.ev.org.br" target="_blank" rel="noopener">www.ev.org.br</a>.</p>
-        </section>
-
+        <div class="grid-magazine" id="gridCursos">
+            <!-- Preenchido via JS -->
+        </div>
     </div>
 
-    <footer>
-        <p>Site demonstrativo criado para fins educacionais. Todos os direitos sobre os cursos pertencem à <a href="https://www.ev.org.br" target="_blank" rel="noopener">Escola Virtual - Fundação Bradesco</a>.</p>
-        <p style="margin-top: 0.5rem;">© 2026 - Tema Roxo Neon ✨</p>
-    </footer>
-
-    <script>
-        const btnMostrarCursos = document.getElementById('btnMostrarCursos');
-        const mensagemCursos = document.getElementById('mensagemCursos');
-
-        btnMostrarCursos.addEventListener('click', function() {
-            mensagemCursos.classList.toggle('visivel');
-            btnMostrarCursos.textContent = mensagemCursos.classList.contains('visivel')
-                ? 'Ocultar mensagem' : 'Mostrar todos os cursos';
-        });
-
-        const btnPython = document.getElementById('btnPython');
-        const mensagemPython = document.getElementById('mensagemPython');
-
-        btnPython.addEventListener('click', function() {
-            mensagemPython.classList.toggle('visivel');
-            btnPython.textContent = mensagemPython.classList.contains('visivel')
-                ? 'Ocultar informação' : 'Quero saber mais sobre Python';
-        });
-
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        console.log('✨ Site carregado no tema Roxo Neon!');
-    </script>
-
-</body>
-</html>
+    <!-- Seção Python -->
+    <section class="python-section" id="python">
+        <
