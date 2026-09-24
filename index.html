@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeCamp - Aprenda a Programar</title>
+    <title>CodeSolar - Cursos de Programação</title>
     <style>
         * {
             margin: 0;
@@ -13,415 +13,581 @@
         }
 
         body {
-            background: #fffbf5;
-            color: #2d2a26;
+            background: #fffdf5;
+            color: #2b2b2b;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Header */
+        /* ===== HEADER ===== */
         header {
-            background: #fff;
-            padding: 1.2rem 2rem;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            background: #fffdf5;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 2px solid #ffd93d;
             flex-wrap: wrap;
             gap: 1rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: #ff6b35;
+            color: #2b2b2b;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .logo span {
-            color: #2d2a26;
+        .logo .sol {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: #ffd93d;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 0 4px #fff4b8;
+        }
+
+        .logo .sol::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            background: #ffb800;
+            border-radius: 50%;
         }
 
         header nav {
             display: flex;
-            gap: 1.8rem;
+            gap: 2rem;
             flex-wrap: wrap;
         }
 
         header nav a {
-            color: #55504a;
+            color: #2b2b2b;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            padding: 0.5rem 0;
             position: relative;
+            transition: color 0.2s;
         }
 
         header nav a:hover {
-            color: #ff6b35;
+            color: #d4a500;
         }
 
-        header nav a::after {
+        header nav a::before {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: 0;
+            left: 50%;
             width: 0;
-            height: 2px;
-            background: #ff6b35;
-            transition: width 0.3s;
+            height: 3px;
+            background: #ffd93d;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+            border-radius: 3px;
         }
 
-        header nav a:hover::after {
+        header nav a:hover::before {
             width: 100%;
         }
 
-        /* Hero */
+        /* ===== HERO DIVIDIDO ===== */
         .hero {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            min-height: 85vh;
+            align-items: center;
+            padding: 3rem;
+            gap: 3rem;
+            background: linear-gradient(180deg, #fffdf5 0%, #fff8dc 100%);
             position: relative;
             overflow: hidden;
         }
 
+        /* Bolhas decorativas amarelas */
         .hero::before {
             content: '';
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
+            top: -150px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #ffe680 0%, transparent 70%);
             border-radius: 50%;
+            z-index: 0;
         }
 
         .hero::after {
             content: '';
             position: absolute;
-            bottom: -80px;
-            left: -80px;
-            width: 250px;
-            height: 250px;
-            background: rgba(255, 255, 255, 0.08);
+            bottom: -200px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #fff2a8 0%, transparent 70%);
             border-radius: 50%;
+            z-index: 0;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 650px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
+        .hero-texto {
             position: relative;
             z-index: 1;
         }
 
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn {
-            padding: 0.85rem 2rem;
-            border-radius: 50px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.25s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-branco {
-            background: white;
-            color: #ff6b35;
-        }
-
-        .btn-branco:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-transparente {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-transparente:hover {
-            background: white;
-            color: #ff6b35;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1150px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-
-        /* Títulos de seção */
-        .titulo-secao {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .titulo-secao .badge {
-            display: inline-block;
-            background: #fff1e6;
-            color: #ff6b35;
+        .hero-texto .tag-topo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #ffd93d;
+            color: #2b2b2b;
             padding: 0.4rem 1rem;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(255, 217, 61, 0.4);
         }
 
-        .titulo-secao h2 {
-            font-size: 2.2rem;
-            color: #2d2a26;
-            margin-bottom: 0.8rem;
+        .hero-texto h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #2b2b2b;
         }
 
-        .titulo-secao p {
-            color: #6b6560;
-            max-width: 600px;
-            margin: 0 auto;
+        .hero-texto h1 .destaque {
+            background: linear-gradient(180deg, transparent 60%, #ffd93d 60%);
+            padding: 0 0.3rem;
         }
 
-        /* Grid de cursos estilo magazine */
-        .grid-magazine {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
+        .hero-texto p {
+            font-size: 1.15rem;
+            color: #55504a;
+            max-width: 520px;
+            margin-bottom: 2rem;
         }
 
-        .card-magazine {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s;
-            border-bottom: 4px solid transparent;
-            position: relative;
-        }
-
-        .card-magazine:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
-            border-bottom-color: #ff6b35;
-        }
-
-        .card-magazine .icone-circulo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .hero-btns {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 1.2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .card-magazine h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.6rem;
-            color: #2d2a26;
-        }
-
-        .card-magazine p {
-            color: #6b6560;
-            font-size: 0.92rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .card-magazine .nivel {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.3rem 0.8rem;
+        .btn {
+            padding: 0.9rem 2rem;
             border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nivel.iniciante {
-            background: #e3f5e1;
-            color: #3d8b37;
-        }
-
-        .nivel.intermediario {
-            background: #fff3cd;
-            color: #a67c00;
-        }
-
-        /* Cores diferentes para cada card */
-        .cor-1 { background: #fff1e6; color: #ff6b35; }
-        .cor-2 { background: #e6f4ff; color: #2f80ed; }
-        .cor-3 { background: #f0e6ff; color: #7c3aed; }
-        .cor-4 { background: #e6fffa; color: #14b8a6; }
-        .cor-5 { background: #fff0f3; color: #e63946; }
-        .cor-6 { background: #f5f5dc; color: #8b7355; }
-
-        /* Seção Python — layout split */
-        .python-section {
-            background: #2d2a26;
-            color: white;
-            border-radius: 30px;
-            padding: 4rem 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
-            margin: 2rem auto;
-            max-width: 1150px;
+            gap: 0.5rem;
+            transition: all 0.25s;
+            font-family: inherit;
+        }
+
+        .btn-amarelo {
+            background: #ffd93d;
+            color: #2b2b2b;
+            box-shadow: 0 6px 20px rgba(255, 217, 61, 0.5);
+        }
+
+        .btn-amarelo:hover {
+            background: #ffc700;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 199, 0, 0.6);
+        }
+
+        .btn-contorno {
+            background: transparent;
+            color: #2b2b2b;
+            border: 2px solid #2b2b2b;
+        }
+
+        .btn-contorno:hover {
+            background: #2b2b2b;
+            color: #ffd93d;
+        }
+
+        /* Bloco visual do hero (estilo "janela de código") */
+        .hero-visual {
             position: relative;
+            z-index: 1;
+        }
+
+        .code-window {
+            background: #2b2b2b;
+            border-radius: 18px;
+            box-shadow: 0 25px 60px rgba(43, 43, 43, 0.25);
+            transform: rotate(2deg);
+            transition: transform 0.4s;
             overflow: hidden;
         }
 
-        .python-section::before {
-            content: '🐍';
-            position: absolute;
-            font-size: 20rem;
-            opacity: 0.05;
-            top: -50px;
-            right: -30px;
+        .code-window:hover {
+            transform: rotate(0deg) translateY(-5px);
         }
 
-        .python-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .python-section h2 span {
-            color: #ffb347;
-        }
-
-        .python-section p {
-            color: #b8b3ad;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .lista-aprendizado {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            position: relative;
-        }
-
-        .lista-aprendizado li {
+        .code-topbar {
+            background: #1a1a1a;
+            padding: 0.8rem 1rem;
             display: flex;
+            gap: 0.5rem;
             align-items: center;
-            gap: 0.6rem;
-            color: #e8e4df;
-            font-size: 0.92rem;
         }
 
-        .lista-aprendizado li::before {
-            content: '✓';
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            background: #ffb347;
-            color: #2d2a26;
-            border-radius: 50%;
-            font-size: 0.75rem;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .python-code-box {
-            background: #1e1c19;
-            border-radius: 16px;
-            padding: 1.5rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            line-height: 1.7;
-            position: relative;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .python-code-box .dots {
-            display: flex;
-            gap: 0.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .python-code-box .dot {
+        .code-topbar .dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
         }
 
-        .dot-vermelho { background: #ff5f56; }
-        .dot-amarelo { background: #ffbd2e; }
-        .dot-verde { background: #27c93f; }
+        .dot-r { background: #ff5f56; }
+        .dot-y { background: #ffbd2e; }
+        .dot-g { background: #27c93f; }
 
-        .code-linha { color: #d4d4d4; }
-        .code-chave { color: #ff6b9d; }
-        .code-funcao { color: #ffb347; }
-        .code-string { color: #a5e844; }
-        .code-comentario { color: #6b6b6b; font-style: italic; }
+        .code-topbar .titulo {
+            margin-left: auto;
+            color: #888;
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+        }
 
-        /* Depoimentos */
+        .code-body {
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: #e4e4e4;
+        }
+
+        .c-key { color: #ff6b9d; }
+        .c-fn { color: #ffd93d; }
+        .c-str { color: #a5e844; }
+        .c-com { color: #666; font-style: italic; }
+        .c-num { color: #ff9f43; }
+
+        /* ===== FAIXA AMARELA ===== */
+        .faixa-amarela {
+            background: #ffd93d;
+            padding: 1.5rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 3px solid #2b2b2b;
+            border-bottom: 3px solid #2b2b2b;
+        }
+
+        .faixa-amarela .scroll {
+            display: inline-block;
+            animation: rolar 25s linear infinite;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #2b2b2b;
+        }
+
+        .faixa-amarela .scroll span {
+            margin: 0 2rem;
+        }
+
+        @keyframes rolar {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ===== SEÇÃO CURSOS ===== */
+        .secao {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .secao-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .secao-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2b2b2b;
+            line-height: 1.15;
+        }
+
+        .secao-header h2 .marca {
+            display: inline-block;
+            width: 60px;
+            height: 12px;
+            background: #ffd93d;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+        }
+
+        .secao-header p {
+            color: #6b6560;
+            max-width: 400px;
+            font-size: 1rem;
+        }
+
+        /* Grid de cursos */
+        .grid-cursos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card-curso {
+            background: white;
+            border: 2px solid #f0e6c8;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-curso::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #ffd93d, #ffb800);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s;
+        }
+
+        .card-curso:hover {
+            border-color: #ffd93d;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(255, 217, 61, 0.25);
+        }
+
+        .card-curso:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-curso .icone {
+            width: 55px;
+            height: 55px;
+            background: #fff8dc;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .card-curso:hover .icone {
+            transform: rotate(-8deg) scale(1.1);
+            background: #ffd93d;
+        }
+
+        .card-curso h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: #2b2b2b;
+        }
+
+        .card-curso p {
+            font-size: 0.9rem;
+            color: #6b6560;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .card-curso .rodape {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-curso .nivel {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #fff4b8;
+            color: #8a6d00;
+        }
+
+        .card-curso .seta {
+            width: 34px;
+            height: 34px;
+            background: #2b2b2b;
+            color: #ffd93d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .card-curso:hover .seta {
+            background: #ffd93d;
+            color: #2b2b2b;
+            transform: translateX(4px);
+        }
+
+        /* ===== PYTHON ===== */
+        .python-area {
+            background: #2b2b2b;
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .python-area::before {
+            content: '🐍';
+            position: absolute;
+            font-size: 22rem;
+            opacity: 0.04;
+            right: -40px;
+            bottom: -60px;
+            transform: rotate(-15deg);
+        }
+
+        .python-area .selo {
+            display: inline-block;
+            background: #ffd93d;
+            color: #2b2b2b;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+        }
+
+        .python-area h2 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .python-area h2 span {
+            color: #ffd93d;
+        }
+
+        .python-area > div > p {
+            color: #b8b3ad;
+            margin-bottom: 1.8rem;
+            font-size: 1.02rem;
+        }
+
+        .topicos {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .topicos li {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: #e4e4e4;
+            font-size: 0.92rem;
+        }
+
+        .topicos li::before {
+            content: '';
+            width: 22px;
+            height: 22px;
+            background: #ffd93d;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232b2b2b'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+            background-size: 14px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .python-visual {
+            position: relative;
+            z-index: 1;
+        }
+
+        .terminal {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            line-height: 1.8;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid #3d3d3d;
+        }
+
+        .terminal .linha {
+            color: #d4d4d4;
+        }
+
+        .terminal .prompt {
+            color: #ffd93d;
+        }
+
+        .terminal .saida {
+            color: #a5e844;
+        }
+
+        /* ===== DEPOIMENTOS ===== */
         .depoimentos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
         }
 
         .depoimento {
-            background: white;
-            border-radius: 16px;
-            padding: 1.8rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background: #fff8dc;
+            border-radius: 20px;
+            padding: 2rem;
             position: relative;
+            border-left: 6px solid #ffd93d;
+            transition: transform 0.3s;
         }
 
-        .depoimento::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 4rem;
-            color: #fff1e6;
-            font-family: Georgia, serif;
-            line-height: 1;
+        .depoimento:hover {
+            transform: translateY(-5px);
         }
 
         .depoimento p {
             color: #55504a;
             font-style: italic;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
         }
 
         .depoimento .autor {
@@ -430,90 +596,159 @@
             gap: 0.8rem;
         }
 
-        .avatar {
-            width: 40px;
-            height: 40px;
+        .depoimento .avatar {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            background: #ffd93d;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
+            font-weight: 800;
+            color: #2b2b2b;
+            font-size: 1.1rem;
         }
 
-        .autor-info strong {
+        .depoimento .info strong {
             display: block;
             font-size: 0.9rem;
-            color: #2d2a26;
+            color: #2b2b2b;
         }
 
-        .autor-info span {
+        .depoimento .info span {
             font-size: 0.8rem;
-            color: #8b857e;
+            color: #8a8478;
         }
 
-        /* Rodapé */
-        footer {
-            background: #2d2a26;
-            color: #b8b3ad;
-            padding: 3rem 2rem 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .footer-conteudo {
-            max-width: 1150px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-col h4 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .footer-col a {
-            display: block;
-            color: #b8b3ad;
-            text-decoration: none;
-            font-size: 0.88rem;
-            margin-bottom: 0.5rem;
-            transition: color 0.2s;
-        }
-
-        .footer-col a:hover {
-            color: #ff6b35;
-        }
-
-        .footer-base {
+        /* ===== SOBRE ===== */
+        .sobre-bloco {
+            background: #fff8dc;
+            border-radius: 30px;
+            padding: 3.5rem;
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3d3a36;
-            font-size: 0.85rem;
-            color: #8b857e;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 3px dashed #ffd93d;
         }
 
-        /* Responsivo */
-        @media (max-width: 800px) {
-            .hero h1 { font-size: 2rem; }
-            .python-section {
+        .sobre-bloco h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2b2b2b;
+        }
+
+        .sobre-bloco p {
+            color: #55504a;
+            max-width: 700px;
+            margin: 0 auto 0.8rem;
+            font-size: 1.02rem;
+        }
+
+        .sobre-bloco a {
+            color: #d4a500;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .sobre-bloco a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CTA FINAL ===== */
+        .cta-final {
+            background: #ffd93d;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            border-top: 3px solid #2b2b2b;
+        }
+
+        .cta-final h2 {
+            font-size: 2.2rem;
+            color: #2b2b2b;
+            margin-bottom: 1rem;
+        }
+
+        .cta-final p {
+            color: #55504a;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .cta-final .btn-escuro {
+            background: #2b2b2b;
+            color: #ffd93d;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.25s;
+        }
+
+        .cta-final .btn-escuro:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(43, 43, 43, 0.3);
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background: #2b2b2b;
+            color: #b8b3ad;
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            font-size: 0.88rem;
+        }
+
+        footer a {
+            color: #ffd93d;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                text-align: center;
+            }
+            .hero-texto p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-btns {
+                justify-content: center;
+            }
+            .hero-texto h1 { font-size: 2.4rem; }
+            .python-area {
                 grid-template-columns: 1fr;
                 padding: 2.5rem 1.5rem;
             }
-            .lista-aprendizado { grid-template-columns: 1fr; }
-            .titulo-secao h2 { font-size: 1.6rem; }
+            .topicos { grid-template-columns: 1fr; }
+            header { padding: 1rem 1.5rem; }
+            .secao { padding: 3rem 1.5rem; }
+            .secao-header h2 { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 500px) {
+            .hero-texto h1 { font-size: 1.9rem; }
+            .python-area h2 { font-size: 1.7rem; }
+            .cta-final h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
     <header>
-        <div class="logo">💻 Code<span>Camp</span></div>
+        <div class="logo">
+            <span class="sol"></span>
+            Code<span style="color:#ffb800;">Solar</span>
+        </div>
         <nav>
             <a href="#cursos">Cursos</a>
             <a href="#python">Python</a>
@@ -522,29 +757,219 @@
         </nav>
     </header>
 
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="hero">
-        <h1>Aprenda a Programar<br>do Zero ao Profissional</h1>
-        <p>Trilha completa de cursos gratuitos baseada na Escola Virtual da Fundação Bradesco, com certificado digital reconhecido.</p>
-        <div class="hero-btns">
-            <a href="#cursos" class="btn btn-branco">Ver Cursos →</a>
-            <a href="#python" class="btn btn-transparente">Python Básico</a>
+        <div class="hero-texto">
+            <span class="tag-topo">☀️ Brilhe na programação</span>
+            <h1>Aprenda a programar com <span class="destaque">energia solar</span></h1>
+            <p>Trilha gratuita de cursos baseada na Escola Virtual da Fundação Bradesco. Do zero ao profissional, com certificado digital incluso.</p>
+            <div class="hero-btns">
+                <a href="#cursos" class="btn btn-amarelo">🚀 Começar agora</a>
+                <a href="#python" class="btn btn-contorno">🐍 Python Básico</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="code-window">
+                <div class="code-topbar">
+                    <span class="dot dot-r"></span>
+                    <span class="dot dot-y"></span>
+                    <span class="dot dot-g"></span>
+                    <span class="titulo">aprender.py</span>
+                </div>
+                <div class="code-body">
+                    <div><span class="c-com"># Meu primeiro programa</span></div>
+                    <div><span class="c-key">def</span> <span class="c-fn">aprender</span>():</div>
+                    <div>&nbsp;&nbsp;curso = <span class="c-str">"Python Básico"</span></div>
+                    <div>&nbsp;&nbsp;<span class="c-key">print</span>(<span class="c-str">f"Estudando {curso}!"</span>)</div>
+                    <div>&nbsp;&nbsp;<span class="c-key">return</span> <span class="c-num">True</span></div>
+                    <br>
+                    <div><span class="c-fn">aprender</span>()</div>
+                    <div><span class="c-com"># ✓ Certificado garantido</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Cursos -->
-    <div class="container" id="cursos">
-        <div class="titulo-secao">
-            <span class="badge">Trilha Completa</span>
-            <h2>Nossos Cursos de Programação</h2>
-            <p>Do básico ao intermediário, escolha por onde começar sua jornada na programação.</p>
-        </div>
-
-        <div class="grid-magazine" id="gridCursos">
-            <!-- Preenchido via JS -->
+    <!-- FAIXA AMARELA -->
+    <div class="faixa-amarela">
+        <div class="scroll">
+            <span>☀️ APRENDA PYTHON</span>
+            <span>⚡ LÓGICA DE PROGRAMAÇÃO</span>
+            <span>💛 JAVASCRIPT</span>
+            <span>🌻 HTML E CSS</span>
+            <span>☀️ BANCO DE DADOS</span>
+            <span>⚡ JAVA BÁSICO</span>
+            <span>☀️ APRENDA PYTHON</span>
+            <span>⚡ LÓGICA DE PROGRAMAÇÃO</span>
+            <span>💛 JAVASCRIPT</span>
+            <span>🌻 HTML E CSS</span>
+            <span>☀️ BANCO DE DADOS</span>
+            <span>⚡ JAVA BÁSICO</span>
         </div>
     </div>
 
-    <!-- Seção Python -->
-    <section class="python-section" id="python">
-        <
+    <!-- CURSOS -->
+    <section class="secao" id="cursos">
+        <div class="secao-header">
+            <div>
+                <div class="marca"></div>
+                <h2>Nossos cursos de programação</h2>
+            </div>
+            <p>Uma trilha completa baseada na área de Programação da Escola Virtual, com cursos gratuitos e certificado digital.</p>
+        </div>
+
+        <div class="grid-cursos" id="gridCursos">
+            <!-- Preenchido via JS -->
+        </div>
+    </section>
+
+    <!-- PYTHON -->
+    <section class="python-area" id="python">
+        <div>
+            <span class="selo">Curso destaque</span>
+            <h2>Python <span>Básico</span> do zero</h2>
+            <p>Aprenda a linguagem mais popular do mundo com um curso gratuito, prático e com certificado reconhecido pela Fundação Bradesco.</p>
+
+            <ul class="topicos">
+                <li>Variáveis e tipos</li>
+                <li>Condicionais</li>
+                <li>Laços de repetição</li>
+                <li>Funções</li>
+                <li>Listas e dicionários</li>
+                <li>Módulos e bibliotecas</li>
+            </ul>
+
+            <button class="btn btn-amarelo" id="btnPython">Quero me inscrever 🌞</button>
+        </div>
+
+        <div class="python-visual">
+            <div class="terminal">
+                <div class="linha"><span class="prompt">>>> </span>nome = <span class="c-str">"aluno"</span></div>
+                <div class="linha"><span class="prompt">>>> </span><span class="c-key">print</span>(<span class="c-str">f"Olá, {nome}!"</span>)</div>
+                <div class="linha saida">Olá, aluno!</div>
+                <div class="linha"><span class="prompt">>>> </span><span class="c-key">for</span> i <span class="c-key">in</span> <span class="c-fn">range</span>(<span class="c-num">3</span>):</div>
+                <div class="linha">&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-key">print</span>(<span class="c-str">"Programando ☀️"</span>)</div>
+                <div class="linha saida">Programando ☀️</div>
+                <div class="linha saida">Programando ☀️</div>
+                <div class="linha saida">Programando ☀️</div>
+                <div class="linha"><span class="prompt">>>> </span><span class="c-com"># Você conseguiu! ✅</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="secao" id="depoimentos">
+        <div class="secao-header">
+            <div>
+                <div class="marca"></div>
+                <h2>Quem já brilhou com a gente</h2>
+            </div>
+            <p>Histórias de alunos que começaram do zero e hoje estão programando.</p>
+        </div>
+
+        <div class="depoimentos">
+            <div class="depoimento">
+                <p>"Comecei no curso de Python Básico e hoje trabalho como desenvolvedor júnior. A didática é excelente!"</p>
+                <div class="autor">
+                    <div class="avatar">JM</div>
+                    <div class="info">
+                        <strong>João Mendes</strong>
+                        <span>Desenvolvedor Júnior</span>
+                    </div>
+                </div>
+            </div>
+            <div class="depoimento">
+                <p>"Os cursos gratuitos da Escola Virtual mudaram minha carreira. Recomendo para todo mundo que quer entrar em TI."</p>
+                <div class="autor">
+                    <div class="avatar">AC</div>
+                    <div class="info">
+                        <strong>Ana Clara</strong>
+                        <span>Estudante de ADS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="depoimento">
+                <p>"Fiz Lógica de Programação primeiro e depois Python. Foi a base que eu precisava para entender tudo."</p>
+                <div class="autor">
+                    <div class="avatar">RS</div>
+                    <div class="info">
+                        <strong>Rafael Souza</strong>
+                        <span>Analista de Dados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="secao" id="sobre">
+        <div class="sobre-bloco">
+            <h2>☀️ Sobre a Escola Virtual</h2>
+            <p>A <strong>Escola Virtual</strong> é uma plataforma de educação online gratuita criada pela <strong>Fundação Bradesco</strong>. Oferece cursos livres (FIC) nas áreas de Administração, Contabilidade, Desenvolvimento Pessoal, Educação e Tecnologia.</p>
+            <p>Os cursos são autoinstrucionais, com certificado digital válido por 2 anos. Para se inscrever, basta criar uma conta em <a href="https://www.ev.org.br" target="_blank" rel="noopener">www.ev.org.br</a>.</p>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <h2>Pronto para brilhar na programação? ☀️</h2>
+        <p>Comece hoje mesmo com um curso gratuito e conquiste seu certificado digital.</p>
+        <a href="https://www.ev.org.br/areas-de-interesse/programacao" target="_blank" rel="noopener" class="btn-escuro">Ir para a Escola Virtual →</a>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>Site demonstrativo educacional • Dados baseados na <a href="https://www.ev.org.br/areas-de-interesse/programacao" target="_blank" rel="noopener">Escola Virtual</a> da Fundação Bradesco</p>
+        <p style="margin-top: 0.5rem;">© 2026 CodeSolar ☀️ — Tema Amarelo</p>
+    </footer>
+
+    <script>
+        // Dados dos cursos
+        const cursos = [
+            { icone: '🧠', titulo: 'Lógica de Programação', desc: 'Fundamentos de algoritmos e raciocínio computacional para iniciantes.', nivel: 'Iniciante' },
+            { icone: '🐍', titulo: 'Python Básico', desc: 'Introdução prática à linguagem Python, a mais popular do mundo.', nivel: 'Iniciante' },
+            { icone: '☕', titulo: 'Java Básico', desc: 'Primeiros passos com Java, sintaxe e orientação a objetos.', nivel: 'Iniciante' },
+            { icone: '🌐', titulo: 'HTML e CSS', desc: 'Crie páginas web modernas e responsivas do zero.', nivel: 'Iniciante' },
+            { icone: '⚡', titulo: 'JavaScript', desc: 'Torne seus sites interativos com a linguagem do navegador.', nivel: 'Intermediário' },
+            { icone: '🗄️', titulo: 'Banco de Dados', desc: 'Modelagem e consultas SQL para armazenar informações.', nivel: 'Intermediário' }
+        ];
+
+        // Renderizar cards
+        const grid = document.getElementById('gridCursos');
+        cursos.forEach(curso => {
+            const card = document.createElement('div');
+            card.className = 'card-curso';
+            card.innerHTML = `
+                <div class="icone">${curso.icone}</div>
+                <h3>${curso.titulo}</h3>
+                <p>${curso.desc}</p>
+                <div class="rodape">
+                    <span class="nivel">${curso.nivel}</span>
+                    <span class="seta">→</span>
+                </div>
+            `;
+            card.addEventListener('click', () => {
+                alert(`☀️ ${curso.titulo}\nNível: ${curso.nivel}\n\nAcesse www.ev.org.br para se inscrever gratuitamente!`);
+            });
+            grid.appendChild(card);
+        });
+
+        // Botão Python
+        document.getElementById('btnPython').addEventListener('click', () => {
+            alert('🐍 Curso Python Básico\n\n✅ Gratuito\n✅ Certificado digital\n✅ Duração: até 60 dias\n✅ Aprovação: 70%\n\nInscreva-se em www.ev.org.br');
+        });
+
+        // Navegação suave
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const alvo = document.querySelector(link.getAttribute('href'));
+                if (alvo) {
+                    e.preventDefault();
+                    alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animação de aparecer ao rolar
+        const observer = new IntersectionObserver((entries) =>
